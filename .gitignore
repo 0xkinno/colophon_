@@ -21,3 +21,4 @@ docs/screens/99-fail.png
 scan-*.txt
 
 .vercel
+.publish/

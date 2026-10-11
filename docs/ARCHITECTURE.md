@@ -18,7 +18,7 @@ flowchart LR
 
 | Package | Role |
 |---|---|
-| `@colophon/kernel` | Types, exact rational arithmetic, scaled-amount replay, statements. No dependencies. |
+| `@colophon/kernel` (published as `@0xkinno/kernel`) | Types, exact rational arithmetic, scaled-amount replay, statements. No dependencies. |
 | `@colophon/proof` | Bundle, evidence Merkle tree, commitment, lossless JSON codec. |
 | `@colophon/verifier` | Offline checks. Used by the server, the browser and the break campaign. |
 | `@colophon/instruments` | Verified mint constants, generated from chain reads. |

@@ -37,7 +37,7 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 | **Guided tour** | https://colophon-fair.vercel.app/tour |
 | **Proof, tamper results and in-browser verifier** | https://colophon-fair.vercel.app/proof |
 | **Public API** | [`/openapi.json`](https://colophon-fair.vercel.app/openapi.json), [`/llms.txt`](https://colophon-fair.vercel.app/llms.txt), Solana Action at [`/api/actions/statement`](https://colophon-fair.vercel.app/api/actions/statement) |
-| **npm package (`@colophon/kernel`)** | `NPM_URL_PLACEHOLDER` |
+| **npm package (`@0xkinno/kernel`)** | https://www.npmjs.com/package/@0xkinno/kernel |
 | **Source** | https://github.com/0xkinno/colophon_ |
 | **Tracks** | Solana ecosystem track, Robinhood Chain track, Superteam Nigeria side track |
 
@@ -381,7 +381,7 @@ A scroll story that prints a statement, a floating capsule nav, digits that roll
 
 ### Open source and composability
 
-- `@colophon/kernel` has zero dependencies and runs in Node, the browser and the edge.
+- `@0xkinno/kernel` ([npm](https://www.npmjs.com/package/@0xkinno/kernel)) has zero dependencies and runs in Node, the browser and the edge. `npm i @0xkinno/kernel`.
 - Public JSON API with open CORS and a published OpenAPI document.
 - `llms.txt` so agents can discover the API.
 - A Solana Action (Blink) at `/api/actions/statement`.
@@ -485,7 +485,7 @@ curl -s -X POST "$APP/api/statement" \
 ```
 
 ```ts
-import { parseDecimal, scaleRaw, formatUiAmount } from "@colophon/kernel";
+import { parseDecimal, scaleRaw, formatUiAmount } from "@0xkinno/kernel";
 
 const multiplier = parseDecimal("1.4861347");
 formatUiAmount(1_000_000_000n, 9, multiplier, 9); // "1.486134700"
@@ -559,7 +559,6 @@ Full list: [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
 |---|---|
 | Authenticated RPC for the full xStocks authority history | Turns a bounded window into complete coverage |
 | Scheduled Watch keeper snapshots | Records every future change the chain will not keep |
-| npm release of `@colophon/kernel` | Composability for wallets and tax tools |
 | Year-end export packs in tax-tool formats | The accountant tier |
 | Mainnet anchoring behind an explicit opt-in | After an external review |
 | Wider tester round with named, consented quotes | Two outside testers have used the live app with no defects reported (`docs/users.md`). The next round measures label comprehension and wallet flows |
