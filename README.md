@@ -412,7 +412,7 @@ The wedge is the accountant's question. The moat is the history: every update th
 |---|---|
 | Universe | 111 Token-2022 mints carrying `scaledUiAmountConfig`, discovered then proven by `getAccountInfo(jsonParsed)`. Earlier work listed 12 mints and only 2 verified, so the registry is now generated from chain reads. |
 | PreStocks history | The multiplier authority was read from its **first signature** (1,718 transactions). Two updates exist (SpaceX 5x, OpenAI 1.4861347x). Replaying them reproduces each mint's live state exactly. |
-| xStocks history | The authority is a busy operations wallet. A bounded window was scanned and its coverage is recorded. Dates before it resolve to `UNKNOWN`. This is a published negative result, not a hidden one. |
+| xStocks history | The authority is a busy operations wallet. The 5,000 newest signatures were scanned, which covers roughly three days (8 to 11 October 2026) and recovered 2 updates (ORCLx). Dates before that window resolve to `UNKNOWN`. This is a published negative result, not a hidden one. An authenticated RPC key reads further back with the same script. |
 | Largest-holder lookup | Not usable on the public endpoint for these mints. Featured holders came from recipients of issuer transfers in recovered transactions, then re-verified live. |
 | Replay vs live state | Reproduced for every mint with recovered events (invariant I7). |
 | Explorer page display | Not measured. Listed under limitations. |

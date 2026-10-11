@@ -11,103 +11,55 @@
       "symbol": "OPENAI",
       "reports": "2826.00881516",
       "kernel": "2826.00881516",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T15:50:31.823Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "OPENAI",
-      "reports": "inAmount 1000000000 raw, out 2141586753",
-      "kernel": "1 raw unit = 1.4861347 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T15:53:50.200Z"
     },
     {
       "tool": "RPC getTokenSupply",
       "symbol": "SPACEX",
       "reports": "43712.471506555",
       "kernel": "43712.471506555",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T15:53:50.709Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "SPACEX",
-      "reports": "inAmount 1000000000 raw, out 606274638",
-      "kernel": "1 raw unit = 5 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T15:57:07.388Z"
     },
     {
       "tool": "RPC getTokenSupply",
       "symbol": "AAPLx",
       "reports": "154264.8355216",
       "kernel": "154264.8355216",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T15:57:07.871Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "AAPLx",
-      "reports": "inAmount 100000000 raw, out 337096164",
-      "kernel": "1 raw unit = 1.003269012 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T16:01:06.243Z"
     },
     {
       "tool": "RPC getTokenSupply",
       "symbol": "NVDAx",
       "reports": "321810.362165",
       "kernel": "321810.362165",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T16:01:08.688Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "NVDAx",
-      "reports": "inAmount 100000000 raw, out 231422571",
-      "kernel": "1 raw unit = 1.001701196 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T16:04:39.805Z"
     },
     {
       "tool": "RPC getTokenSupply",
       "symbol": "SPYx",
       "reports": "95774.95984341",
       "kernel": "95774.95984341",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T16:04:40.540Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "SPYx",
-      "reports": "inAmount 100000000 raw, out 783728362",
-      "kernel": "1 raw unit = 1.00571456 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T16:08:06.719Z"
     },
     {
       "tool": "RPC getTokenSupply",
       "symbol": "TSLAx",
       "reports": "229635.6273418",
       "kernel": "229635.6273418",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T16:08:07.460Z"
-    },
-    {
-      "tool": "Jupiter quote API",
-      "symbol": "TSLAx",
-      "reports": "inAmount 100000000 raw, out 382840636",
-      "kernel": "1 raw unit = 1 shown",
-      "verdict": "NOT_COMPARABLE",
-      "at": "2026-10-11T16:11:38.135Z"
     },
     {
       "tool": "Robinhood Chain totalSupply()",
       "symbol": "CRM",
       "reports": "165730987340000000000",
       "kernel": "165921300011547413836",
-      "verdict": "MISMATCH",
+      "verdict": "RAW_VS_SCALED",
       "at": "2026-10-11T16:11:42.025Z"
     },
     {
@@ -115,7 +67,7 @@
       "symbol": "P",
       "reports": "91571050000000000000",
       "kernel": "91571050000000000000",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T16:11:42.730Z"
     },
     {
@@ -123,8 +75,11 @@
       "symbol": "CIEN",
       "reports": "7321000000000000000",
       "kernel": "7321000000000000000",
-      "verdict": "MATCH",
+      "verdict": "AGREES",
       "at": "2026-10-11T16:11:43.476Z"
     }
+  ],
+  "notScored": [
+    "Jupiter quote API responses are in raw units and have no independent oracle to compare with"
   ]
 }

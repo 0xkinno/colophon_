@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc -b",
     "typecheck": "tsc --noEmit",
-    "test": "node --test \"dist/test/*.test.js\""
+    "test": "node --test dist/test/invariants.test.js dist/test/scaled.test.js dist/test/properties.test.js"
   },
   "devDependencies": {
     "@types/node": "^20.19.43"
