@@ -38,21 +38,8 @@ for (const authority of authorities) {
   const scoped = sigs.slice(0, MAX);
   const reachedGenesis = sigs.length < MAX || scoped.length < MAX;
   let fetched = 0;
-  for (const s of scoped) {
-    if (s.err) continue;
-    let tx = cache.get(s.signature);
-    if (!tx) {
-      try {
-        tx = await rpc.getTransaction(s.signature);
-      } catch {
-        failed.push(s.signature);
-        continue;
-      }
-      if (!tx) continue;
-      cache.set(s.signature, tx);
-    }
-    fetched++;
-    if (fetched % 250 === 0) process.stderr.write(`${authority.slice(0, 6)} ${fetched}/${scoped.length} events=${events.length}\n`);
+  const CONC = Number(process.env.RECOVER_CONCURRENCY ?? 6);
+  const handle = (s, tx) => {
     const inner = (tx.meta?.innerInstructions ?? []).flatMap((x) => x.instructions);
     const all = [...tx.transaction.message.instructions, ...inner];
     for (const ix of all) {
@@ -67,16 +54,30 @@ for (const authority of authorities) {
         mkdirSync(join(ROOT, "docs", "sources"), { recursive: true });
         writeFileSync(join(ROOT, "docs", "sources", "updateMultiplier.raw.json"), JSON.stringify({ note: "Raw jsonParsed getTransaction for one real updateMultiplier on Solana mainnet.", signature: s.signature, tx }, null, 2));
       }
-      events.push({
-        signature: s.signature,
-        slot: tx.slot,
-        blockTime: tx.blockTime,
-        mint: info.mint,
-        authority: info.authority,
-        newMultiplier: info.newMultiplier,
-        newMultiplierTimestamp: info.newMultiplierTimestamp,
-      });
+      events.push({ signature: s.signature, slot: tx.slot, blockTime: tx.blockTime, mint: info.mint, authority: info.authority, newMultiplier: info.newMultiplier, newMultiplierTimestamp: info.newMultiplierTimestamp });
     }
+  };
+  const live = scoped.filter((x) => !x.err);
+  for (let i = 0; i < live.length; i += CONC) {
+    await Promise.all(
+      live.slice(i, i + CONC).map(async (s) => {
+        let tx = cache.get(s.signature);
+        if (!tx) {
+          try {
+            tx = await rpc.getTransaction(s.signature);
+          } catch {
+            failed.push(s.signature);
+            return;
+          }
+          if (!tx) return;
+          cache.set(s.signature, tx);
+        }
+        fetched++;
+        handle(s, tx);
+      })
+    );
+    if ((i / CONC) % 40 === 0) process.stderr.write(`${authority.slice(0, 6)} ${fetched}/${scoped.length} events=${events.length}
+`);
   }
   coverage[authority] = {
     signaturesScanned: scoped.length,

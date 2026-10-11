@@ -2,6 +2,7 @@ import { ProofVerifier } from "./ProofVerifier";
 import { featuredHolders } from "@/server/featured";
 import probe from "@/data/generated/probe.json";
 import breakRes from "@/data/generated/break.json";
+import guardEv from "@/data/generated/guard.json";
 import { UNITSEAL_GUARD_ADDRESS, COLOPHON_ANCHOR_PROGRAM_ID } from "@colophon/instruments";
 import { rhExplorer, solExplorer } from "@/lib/format";
 
@@ -23,6 +24,7 @@ export default function ProofPage() {
   const holders = featuredHolders();
   const rows = (probe as { rows: Row[] }).rows;
   const br = breakRes as unknown as Break;
+  const guard = guardEv as unknown as { simulated?: { name: string; args?: string[] }; sealedMultiplier?: string; currentMultiplier?: string; transaction?: { hash: string; explorer: string } | null };
   return (
     <div className="wrap page-top" style={{ paddingBottom: 60, display: "grid", gap: 56 }}>
       <div className="sec-head">
@@ -97,6 +99,18 @@ export default function ProofPage() {
           <h3 style={{ margin: "10px 0" }}>UnitSealGuard</h3>
           <p>The read side tells you what you held. The guard stops you acting on a stale number: a seal bound to a multiplier that no longer matches is refused with <span className="mono">MultiplierMismatch</span>.</p>
           <a className="mono" href={rhExplorer("address", UNITSEAL_GUARD_ADDRESS)} target="_blank" rel="noreferrer">{UNITSEAL_GUARD_ADDRESS}</a>
+          {guard.simulated && (
+            <div className="notice notice--good" style={{ marginTop: 14 }} data-testid="guard-evidence">
+              <strong className="mono">{guard.transaction ? "REFUSED ON CHAIN" : "REFUSED (simulated against mainnet state)"}</strong>
+              <div className="mono" style={{ fontSize: 12, marginTop: 6 }}>
+                {guard.simulated.name}({(guard.simulated.args ?? []).join(", ")})
+              </div>
+              <div className="stack__sub">sealed {guard.sealedMultiplier}, chain says {guard.currentMultiplier}</div>
+              {guard.transaction && (
+                <a className="mono" href={guard.transaction.explorer} target="_blank" rel="noreferrer">tx {guard.transaction.hash.slice(0, 18)}...</a>
+              )}
+            </div>
+          )}
         </div>
         <div className="panel">
           <span className="label">Solana devnet</span>

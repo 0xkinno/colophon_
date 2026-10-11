@@ -54,7 +54,8 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 7. [Tour of the product](#tour-of-the-product)
 8. [Wallet transactions that work end to end](#wallet-transactions-that-work-end-to-end)
 9. [Judging criteria, answered one by one](#judging-criteria-answered-one-by-one)
-10. [Why Solana, and why Robinhood Chain](#why-solana-and-why-robinhood-chain)
+10. [Deployed contracts and addresses](#deployed-contracts-and-addresses)
+10b. [Why Solana, and why Robinhood Chain](#why-solana-and-why-robinhood-chain)
 11. [Evidence, including the negative results](#evidence-including-the-negative-results)
 12. [Who reads these tokens wrong](#who-reads-these-tokens-wrong)
 13. [Public API](#public-api)
@@ -398,6 +399,21 @@ The wedge is the accountant's question. The moat is the history: every update th
 
 <br/>
 
+## Deployed contracts and addresses
+
+Everything below is already deployed. Colophon reuses it rather than shipping new contracts.
+
+| What | Network | Address | Link |
+|---|---|---|---|
+| **UnitSealGuard** (refuses actions sealed to a stale multiplier) | Robinhood Chain mainnet (4663) | `0x2518853d8a6799734ded70857f0cffc26a175c14` | [Blockscout](https://robinhoodchain.blockscout.com/address/0x2518853d8a6799734ded70857f0cffc26a175c14) |
+| Guard deployment transaction | Robinhood Chain mainnet | `0xc41c088f60ee8ef82b11795f2106e81b0d3bd9295d16fc0ca7ae7cb2dd6ec19b` | [Blockscout](https://robinhoodchain.blockscout.com/tx/0xc41c088f60ee8ef82b11795f2106e81b0d3bd9295d16fc0ca7ae7cb2dd6ec19b) |
+| Guard owner and attestor | Robinhood Chain mainnet | `0xe98ACBD5d8F02A92A5492b5830BA83ffBB684E7f` | [Blockscout](https://robinhoodchain.blockscout.com/address/0xe98ACBD5d8F02A92A5492b5830BA83ffBB684E7f) |
+| **Colophon statement anchor program** | Solana devnet | `7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2` | [Explorer](https://explorer.solana.com/address/7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2?cluster=devnet) |
+| Token-2022 program | Solana mainnet | `TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb` | [Explorer](https://explorer.solana.com/address/TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb) |
+| Memo program (Blink) | Solana | `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcxr` | [Explorer](https://explorer.solana.com/address/MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcxr) |
+
+**Guard refusal, checked against mainnet state.** `scripts/guard-refusal.mjs` signs a seal for a multiplier one wei behind AAPL's live `uiMultiplier()` and submits it to the guard. Simulated against current mainnet state the guard answers `MultiplierMismatch(1000566080061092435, 1000566080061092436)` (`evidence/guard/refusal-simulated.json`, shown on `/proof`). Recording it as an on-chain transaction needs a funded sender, so `--send` writes `evidence/guard/refusal.json` once one is provided.
+
 ## Why Solana, and why Robinhood Chain
 
 **Solana.** Token-2022 puts the multiplier in the mint account itself, and every authority update is a transaction a reader can fetch, parse and replay. Program-derived accounts make an immutable per-statement commitment cheap, and Wallet Standard means any wallet can anchor it. Solana is where the history problem is hardest and the evidence is richest, so it is the primary adapter.
@@ -447,7 +463,7 @@ All read-only, CORS open, cached 30 seconds with stale-while-revalidate.
 | `GET /api/v1/verify?bundle=` and `POST` | Per-check verdict for a bundle |
 | `GET /api/v1/board` | Universe rows for both chains |
 | `GET /api/v1/watch` | Recorded updates newest first, plus live changes since the snapshot |
-| `GET /api/actions/statement` | Solana Action (Blink) |
+| `GET /api/actions/statement` | Solana Action (Blink). The icon, metadata, parameters and POST (a memo transaction carrying the statement hash) were validated against the Actions spec. |
 | `/openapi.json`, `/llms.txt` | Discovery |
 
 ```bash

@@ -37,7 +37,9 @@ if (existsSync(labP)) {
   if (lab.cases?.C4?.rollPolicy) merged.policy = lab.cases.C4.rollPolicy;
   writeFileSync(join(out, "lab.json"), JSON.stringify(lab));
 }
-for (const [src, dst] of [["data/featured-statement.json", "featured-statement.json"], ["evidence/compat/probe.json", "probe.json"], ["evidence/break/results.json", "break.json"]]) {
+const guardSim = join(ROOT, "evidence", "guard", "refusal-simulated.json");
+if (existsSync(guardSim) && !existsSync(join(ROOT, "evidence", "guard", "refusal.json"))) writeFileSync(join(out, "guard.json"), readFileSync(guardSim, "utf8"));
+for (const [src, dst] of [["data/featured-statement.json", "featured-statement.json"], ["evidence/compat/probe.json", "probe.json"], ["evidence/guard/refusal.json", "guard.json"], ["evidence/break/results.json", "break.json"]]) {
   const p = join(ROOT, src);
   if (existsSync(p)) writeFileSync(join(out, dst), readFileSync(p, "utf8"));
 }
