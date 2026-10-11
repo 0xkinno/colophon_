@@ -1,6 +1,0 @@
-{
-  "framework": "nextjs",
-  "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm --filter \"./packages/*\" run build && pnpm --filter colophon-web run build",
-  "outputDirectory": "apps/web/.next"
-}
