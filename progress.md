@@ -11,4 +11,5 @@
 | Wallet actions | Devnet anchoring end to end through a Wallet Standard wallet; EIP-712 statement signature on Robinhood Chain. | `scripts/smoke.mjs` |
 | Break campaign | 21 of 21 as expected after fix F2. | `evidence/break/results.json` |
 | Tests | Kernel 34, verifier 19, journey smoke 18+ steps. | `pnpm test`, `pnpm smoke` |
-| Users | None recorded. | `docs/users.md` |
+| Users | 2 outside testers, no defects reported. | `docs/users.md` |
+| Guard refusal on chain | Done. Reverted with MultiplierMismatch, block 86,118,673. | `evidence/guard/refusal.json` |

@@ -1,20 +1,57 @@
 {
-  "generatedAt": "2026-10-11T17:25:41.482Z",
-  "source": "https://api.mainnet-beta.solana.com",
+  "generatedAt": "2026-10-11T20:42:43.058Z",
+  "source": "https://mainnet.helius-rpc.com/?api-key=REDACTED",
   "coverage": {
     "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS": {
-      "signaturesScanned": 5000,
-      "newestBlockTime": 1791716908,
-      "oldestBlockTime": 1791446527,
+      "signaturesScanned": 15000,
+      "newestBlockTime": 1791745799,
+      "oldestBlockTime": 1790961875,
       "reachedBeginning": false
     }
   },
-  "failedFetches": 0,
+  "failedFetches": 3,
   "instructionTypesSeen": {
-    "updateMultiplier": 22
+    "updateMultiplier": 66,
+    "initializeScaledUiAmountConfig": 39
   },
-  "eventCount": 2,
+  "eventCount": 6,
   "events": [
+    {
+      "signature": "qmmaksT9QbBsKbZvot7PMrhXkyEsZZsr2EKhA2KWQgxWv5qTZVwrdyLcb1nEc197KGGksbjCoTEMTRkJ2pefkW5",
+      "slot": 453686209,
+      "blockTime": 1791232040,
+      "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.0139174713894084",
+      "newMultiplierTimestamp": 1783295700
+    },
+    {
+      "signature": "qmmaksT9QbBsKbZvot7PMrhXkyEsZZsr2EKhA2KWQgxWv5qTZVwrdyLcb1nEc197KGGksbjCoTEMTRkJ2pefkW5",
+      "slot": 453686209,
+      "blockTime": 1791232040,
+      "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.0174407720681127",
+      "newMultiplierTimestamp": 1791246600
+    },
+    {
+      "signature": "dxnsyFQ9GwCixVWGVrGsEtVCscPFdY18HZa6yWYX7XvU4fQhZDLQBVDiDFsmtWPTd3U3eKpYCq4mE1X39hQCS71",
+      "slot": 454009995,
+      "blockTime": 1791318902,
+      "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.0876797409606038",
+      "newMultiplierTimestamp": 1782865800
+    },
+    {
+      "signature": "dxnsyFQ9GwCixVWGVrGsEtVCscPFdY18HZa6yWYX7XvU4fQhZDLQBVDiDFsmtWPTd3U3eKpYCq4mE1X39hQCS71",
+      "slot": 454009995,
+      "blockTime": 1791318902,
+      "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.0993334524705851",
+      "newMultiplierTimestamp": 1791333000
+    },
     {
       "signature": "2awZ9ZCcPpsedvuCcC7QxVCkyyRJrUNm1TjENvSSAuq1W2TgAedZNndymwQqv3FcoW83CFt6WjSrsUFgHzyD6xix",
       "slot": 454652392,

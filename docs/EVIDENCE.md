@@ -22,6 +22,7 @@ Colophon's rule is simple: a number is in the product only if a logged, real res
 | Where read paths disagree | `evidence/compat/probe.json` | `pnpm probe` |
 | Bundles resist tampering | `evidence/break/results.json` | `pnpm break` against a running app |
 | The product works end to end | `evidence/smoke-results.json`, `docs/screens/` | `pnpm smoke` |
+| The guard refuses a stale multiplier on chain | `evidence/guard/refusal.json`, transaction `0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325` | `node scripts/guard-refusal.mjs --send` (needs a funded sender) |
 | No unverified literal ships | CI | `pnpm guard` |
 
 ## How history was recovered

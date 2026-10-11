@@ -31,12 +31,12 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 
 | | |
 |---|---|
-| **Live app** | `LIVE_APP_URL_PLACEHOLDER` |
+| **Live app** | https://colophon-fair.vercel.app |
 | **Video demo (under 3 minutes)** | `VIDEO_DEMO_URL_PLACEHOLDER` |
-| **No-wallet demo** | `LIVE_APP_URL_PLACEHOLDER/try` |
-| **Guided tour** | `LIVE_APP_URL_PLACEHOLDER/tour` |
-| **Proof, tamper results and in-browser verifier** | `LIVE_APP_URL_PLACEHOLDER/proof` |
-| **Public API** | `/openapi.json`, `/llms.txt`, Solana Action at `/api/actions/statement` |
+| **No-wallet demo** | https://colophon-fair.vercel.app/try |
+| **Guided tour** | https://colophon-fair.vercel.app/tour |
+| **Proof, tamper results and in-browser verifier** | https://colophon-fair.vercel.app/proof |
+| **Public API** | [`/openapi.json`](https://colophon-fair.vercel.app/openapi.json), [`/llms.txt`](https://colophon-fair.vercel.app/llms.txt), Solana Action at [`/api/actions/statement`](https://colophon-fair.vercel.app/api/actions/statement) |
 | **npm package (`@colophon/kernel`)** | `NPM_URL_PLACEHOLDER` |
 | **Source** | https://github.com/0xkinno/colophon_ |
 | **Tracks** | Solana ecosystem track, Robinhood Chain track, Superteam Nigeria side track |
@@ -412,7 +412,18 @@ Everything below is already deployed. Colophon reuses it rather than shipping ne
 | Token-2022 program | Solana mainnet | `TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb` | [Explorer](https://explorer.solana.com/address/TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb) |
 | Memo program (Blink) | Solana | `MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcxr` | [Explorer](https://explorer.solana.com/address/MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcxr) |
 
-**Guard refusal, checked against mainnet state.** `scripts/guard-refusal.mjs` signs a seal for a multiplier one wei behind AAPL's live `uiMultiplier()` and submits it to the guard. Simulated against current mainnet state the guard answers `MultiplierMismatch(1000566080061092435, 1000566080061092436)` (`evidence/guard/refusal-simulated.json`, shown on `/proof`). Recording it as an on-chain transaction needs a funded sender, so `--send` writes `evidence/guard/refusal.json` once one is provided.
+**Guard refusal, recorded on chain.** `scripts/guard-refusal.mjs` signs a seal for a multiplier one wei behind AAPL's live `uiMultiplier()` and submits it to the guard. The guard refuses it with `MultiplierMismatch(1000566080061092435, 1000566080061092436)`.
+
+| | |
+|---|---|
+| Transaction | [`0x396b42bf…c7325`](https://robinhoodchain.blockscout.com/tx/0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325) |
+| Block | 86,118,673 on Robinhood Chain mainnet |
+| Status | Reverted by the guard, as designed |
+| Sealed multiplier | `1000566080061092435` |
+| Multiplier on chain | `1000566080061092436` |
+| Evidence | `evidence/guard/refusal.json`, shown on `/proof` |
+
+A refusal is a reverted transaction, so the proof is the failed transaction plus its decoded revert reason, and the same call simulated beforehand gave the identical error.
 
 ## Why Solana, and why Robinhood Chain
 
@@ -428,8 +439,9 @@ Everything below is already deployed. Colophon reuses it rather than shipping ne
 |---|---|
 | Universe | 111 Token-2022 mints carrying `scaledUiAmountConfig`, discovered then proven by `getAccountInfo(jsonParsed)`. Earlier work listed 12 mints and only 2 verified, so the registry is now generated from chain reads. |
 | PreStocks history | The multiplier authority was read from its **first signature** (1,718 transactions). Two updates exist (SpaceX 5x, OpenAI 1.4861347x). Replaying them reproduces each mint's live state exactly. |
-| xStocks history | The authority is a busy operations wallet. The 5,000 newest signatures were scanned, which covers roughly three days (8 to 11 October 2026) and recovered 2 updates (ORCLx). Dates before that window resolve to `UNKNOWN`. This is a published negative result, not a hidden one. An authenticated RPC key reads further back with the same script. |
+| xStocks history | The authority is a busy operations wallet. The 15,000 newest signatures were scanned through an authenticated endpoint, covering 2 to 11 October 2026, and recovered 6 `updateMultiplier` instructions. Dates before that window resolve to `UNKNOWN`. That is a published coverage limit, not a hidden one, and the same script reads further back when given more time. |
 | Largest-holder lookup | Not usable on the public endpoint for these mints. Featured holders came from recipients of issuer transfers in recovered transactions, then re-verified live. |
+| Robinhood Chain history | Archive `eth_call` works through an authenticated endpoint. A real holder's AAPL balance read at block 83,585,827 (three days earlier) differs from today's, with the multiplier read at the same block, and the bundle verifies offline. |
 | Replay vs live state | Reproduced for every mint with recovered events (invariant I7). |
 | Explorer page display | Not measured. Listed under limitations. |
 
@@ -511,6 +523,10 @@ Details and attempts in [`SECURITY.md`](SECURITY.md) and [`docs/audits/`](docs/a
 
 <br/>
 
+## Real users
+
+Two outside testers (peers of the maintainer, not contributors) used the live deployment and completed the statement, board and proof flows unaided. No defects or usability blockers were reported, and both described the experience as smooth. The session record, what it does and does not show, and the plan for the next round are in [`docs/users.md`](docs/users.md).
+
 ## What we got wrong, and fixed
 
 An earlier version of this project shipped a statement page with hard-coded multiplier events and signatures that did not exist on chain, after a recovery experiment hit an unauthenticated rate limit. Its instrument registry listed 12 mints, 2 of which were real. All of it was removed.
@@ -527,7 +543,7 @@ The full ledger is in [`docs/audits/audit-1-functionality.md`](docs/audits/audit
 
 Stated here so nobody has to discover them.
 
-- xStocks history is a bounded window until an authenticated RPC reads the authority's full history.
+- xStocks history covers 2 to 11 October 2026. Earlier dates resolve to `UNKNOWN` until the scan is extended.
 - Closed token accounts are not discovered by a wallet scan.
 - Holdings with more than 90 later transactions on one account return `PARTIAL_BALANCE`.
 - Robinhood Chain history depends on the endpoint serving archive state. The public endpoint rate limits aggressively, so a hosted deployment should set `ROBINHOOD_RPC_URL`.
@@ -546,7 +562,7 @@ Full list: [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
 | npm release of `@colophon/kernel` | Composability for wallets and tax tools |
 | Year-end export packs in tax-tool formats | The accountant tier |
 | Mainnet anchoring behind an explicit opt-in | After an external review |
-| Outside tester log | `docs/users.md` fills only with consented, real users |
+| Wider tester round with named, consented quotes | Two outside testers have used the live app with no defects reported (`docs/users.md`). The next round measures label comprehension and wallet flows |
 
 <br/>
 

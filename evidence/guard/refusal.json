@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-10-11T20:37:34.564Z",
+  "chainId": 4663,
+  "guard": "0x2518853d8a6799734ded70857F0cFFC26a175C14",
+  "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+  "attestor": "0xe98ACBD5d8F02A92A5492b5830BA83ffBB684E7f",
+  "sender": "0x701FC144aF27F963253C983F0e06664A5278e405",
+  "currentMultiplier": "1000566080061092436",
+  "sealedMultiplier": "1000566080061092435",
+  "simulated": {
+    "name": "MultiplierMismatch",
+    "args": [
+      "1000566080061092435",
+      "1000566080061092436"
+    ]
+  },
+  "transaction": {
+    "hash": "0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325",
+    "block": "86118673",
+    "status": "reverted",
+    "explorer": "https://robinhoodchain.blockscout.com/tx/0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325"
+  }
+}
