@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-11T15:49:38.342Z",
+  "base": "http://localhost:3100",
+  "steps": [
+    {
+      "name": "landing renders headline",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "landing has live ticker",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "try shows a real statement",
+      "ok": true,
+      "detail": "SPACEX"
+    },
+    {
+      "name": "statement carries an evidence label",
+      "ok": true,
+      "detail": "REPLAYED,Solana,TOKEN UNITS, not legal shares,OFFLINE VERIFIED,IDLE,MEASURED,Solana,TOKEN UNITS, not legal shares,OFFLINE VERIFIED,IDLE"
+    },
+    {
+      "name": "offline check passes in browser",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "date change re-renders statement",
+      "ok": true,
+      "detail": "before 01234567890123456789.012345678901234567890123456789012345678901234567890123456789|01234567890123456789.012345678901234567890123456789012345678901234567890123456789|0123456789.012345678901234567890123456789012345678901234567890123456789|0123456789.012345678901234567890123456789012345678901234567890123456789"
+    },
+    {
+      "name": "anchor transaction confirms and reads back",
+      "ok": true,
+      "detail": "Anchor SPACEX statement on devnetVERIFIEDprogram 7pPKsqAg9AFZzSEJbygpbqAVKGFgXpa"
+    },
+    {
+      "name": "proof verifier PASS on real bundle",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "flipped byte is refused",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "/board no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "/watch no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "/lab no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "/tour no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "/testers no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile / no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile /try no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile /board no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile /proof no horizontal overflow",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no console errors",
+      "ok": false,
+      "detail": "http://localhost:3100/board Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ]
+}

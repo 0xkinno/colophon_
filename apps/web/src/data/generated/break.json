@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-10-11T15:28:55.142Z",
+  "subject": "SPACEX 4j2Y8Pn1dpSqS7JYaMcJjdNUaCg4GryWGuMj2XhvnpA6",
+  "bundleHash": "bundle-7426a8382b40c50c",
+  "results": [
+    {
+      "id": "B0",
+      "attack": "Untouched real bundle verifies",
+      "detected": true,
+      "reason": "PASS as expected"
+    },
+    {
+      "id": "B1",
+      "attack": "Raise the raw balance by one unit",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected 66491befdce3e941159aa95ce86b7362a936ad4c7c136650916e802255a49887 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B2",
+      "attack": "Swap the multiplier numerator",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected c00dc80232425457615a1f35c57dd136e42fad993daa9eedb37f7fb03dbc1918 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B3",
+      "attack": "Change the as-of timestamp by one second",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected eb94869c6053b0b89fbef7ff439c29b53125f13fe9f46e52f958c773287d3df3 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B4",
+      "attack": "Replace the statement hash with another valid-looking digest",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2 but found 0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "B5",
+      "attack": "Flip one hex digit of the bundle hash",
+      "detected": true,
+      "reason": "Proof Bundle Hash Integrity: FAIL: Bundle hash mismatch: expected 9b85ac1c6f4016c02bce3ddd67aeb54155a73a6d61ef099c9aadd9d62ddbf85c but found 0b85ac1c6f4016c02bce3ddd67aeb54155a73a6d61ef099c9aadd9d62ddbf85c"
+    },
+    {
+      "id": "B6",
+      "attack": "Remove all source events and a balance anchor offset",
+      "detected": true,
+      "reason": "Deterministic Balance Reconstruction: FAIL: Balance divergence: reconstructed 3085521956 vs statement 3085521957"
+    },
+    {
+      "id": "B7",
+      "attack": "Delete one source event",
+      "detected": true,
+      "reason": "verifier threw: bundle has no events to delete; raw balance tamper covers this case"
+    },
+    {
+      "id": "B8",
+      "attack": "Duplicate a source event",
+      "detected": true,
+      "reason": "verifier threw: bundle has no events to duplicate"
+    },
+    {
+      "id": "B9",
+      "attack": "Change a source signature",
+      "detected": true,
+      "reason": "Source Anchors Traceability (I2): FAIL: 1 source anchors lack valid on-chain coordinates"
+    },
+    {
+      "id": "B10",
+      "attack": "Zero a source slot",
+      "detected": true,
+      "reason": "Source Anchors Traceability (I2): FAIL: 1 source anchors lack valid on-chain coordinates"
+    },
+    {
+      "id": "B11",
+      "attack": "Change the wallet in the statement only",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected fcc03e46cab8d0c25bc3bc3e10409f108a18c93fd63baf440c95ba7f90fad7b7 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B12",
+      "attack": "Change the mint in the statement only",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected 3a88958926ad1740db07035e1b9300048bfe58b2aae6d37679f9ff02c25539f6 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B13",
+      "attack": "Substitute the evidence root",
+      "detected": true,
+      "reason": "Evidence Merkle Tree Root & Path Integrity: FAIL: Statement evidenceRoot mismatch: 2c12e5724daf23c75a798a4a380c2623739a2ae44cbe960bbe5256911247087a vs ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "id": "B14",
+      "attack": "Substitute the statement commitment",
+      "detected": true,
+      "reason": "Cryptographic Statement Commitment Binding: FAIL: Commitment mismatch: expected a06a798deff5f2f2e5d57078bde46f5c89a35cc789a38344b0c0a0386a4ae542 vs eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "id": "B15",
+      "attack": "Claim COMPLETE with a missing range",
+      "detected": true,
+      "reason": "Deterministic Completeness State Validation: FAIL: Statement claims COMPLETE but contains 1 missing range(s)"
+    },
+    {
+      "id": "B16",
+      "attack": "Alter the displayed units only",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected 8f7423246d493346b554abd53a44241c19f2150cddbb6e76a65f87eecd7b3aeb but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    },
+    {
+      "id": "B17",
+      "attack": "Change the balance anchor",
+      "detected": true,
+      "reason": "Deterministic Balance Reconstruction: FAIL: Balance divergence: reconstructed 3085521958 vs statement 3085521957"
+    },
+    {
+      "id": "B18",
+      "attack": "Null the block time of an anchor",
+      "detected": true,
+      "reason": "Source Anchors Traceability (I2): FAIL: 1 source anchors lack valid on-chain coordinates"
+    },
+    {
+      "id": "B19",
+      "attack": "Replace the manifest bundle id",
+      "detected": true,
+      "reason": "Proof Bundle Hash Integrity: FAIL: Bundle hash mismatch: expected 96c4220b8c7326366ebbe2d989cb5c37ef61c47058cac5d8367f26968e99f6be but found 9b85ac1c6f4016c02bce3ddd67aeb54155a73a6d61ef099c9aadd9d62ddbf85c"
+    },
+    {
+      "id": "B20",
+      "attack": "One-byte tamper of the serialized JSON",
+      "detected": true,
+      "reason": "Statement Hash Integrity: FAIL: Statement hash mismatch: expected f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2 but found f101ed3bec85873fd86a233b4943426e446fd4da257de78462d24b13b0339ac2"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@colophon/verifier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js",
+      "default": "./dist/src/index.js"
+    }
+  },
+  "dependencies": {
+    "@colophon/kernel": "workspace:*",
+    "@colophon/proof": "workspace:*",
+    "@colophon/chain": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/test/verifier.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43"
+  }
+}

@@ -1,0 +1,17 @@
+[package]
+name = "colophon_anchor"
+version = "0.1.0"
+edition = "2021"
+description = "Colophon on-chain proof anchoring program for Solana Devnet"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+solana-program = "1.18"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+opt-level = 3

@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-10-11T15:13:33.736Z",
+  "holders": [
+    {
+      "wallet": "4j2Y8Pn1dpSqS7JYaMcJjdNUaCg4GryWGuMj2XhvnpA6",
+      "symbol": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "tokenAccount": "4AUPXsbvBGzbt7bbhNrCXP7fFs2pj6Qib1UcE8MvynGS",
+      "rawAmount": "3085521957",
+      "decimals": 9,
+      "txCountAtDiscovery": 1,
+      "oldestBlockTime": 1758070572,
+      "verifiedAt": "2026-10-11T15:13:25.011Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "Et5Z8CKA5JU9VF2Xr8eXDAjKrWc2pdKc3HhGEfhyBkjo",
+      "symbol": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "tokenAccount": "Ez7NQ1mavfyEpMEWPzNWoStGtm1GhZ2pVwRn6qvRpwou",
+      "rawAmount": "4",
+      "decimals": 9,
+      "txCountAtDiscovery": 2,
+      "oldestBlockTime": 1758070606,
+      "verifiedAt": "2026-10-11T15:13:32.128Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "F2zpemwiCiiDgLob1M5sDxJf9KBc6ZSBmxjyxKBrFFGL",
+      "symbol": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "tokenAccount": "7d29Jn2MUHdSfnpEVrbwf4VEZ92KZTe9azfPtc5eMQND",
+      "rawAmount": "1999856565",
+      "decimals": 9,
+      "txCountAtDiscovery": 4,
+      "oldestBlockTime": 1758070606,
+      "verifiedAt": "2026-10-11T15:13:33.736Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "DF2P8Fj5dxftv6Fh4y7FcjDY8QEbS7wDtMmmQQ2ZUK4X",
+      "symbol": "OPENAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "tokenAccount": "CnCFTXjWfR7Xh99yzpRJ42o6J6t1e5n4dTVpH4LwKgEp",
+      "rawAmount": "194615139",
+      "decimals": 9,
+      "txCountAtDiscovery": 7,
+      "oldestBlockTime": 1758069998,
+      "verifiedAt": "2026-10-11T15:13:28.174Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "DBiXdS4bkwWNjuKSBvLUbK9LpoiY1jcPfHe4J59iLEQ7",
+      "symbol": "OPENAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "tokenAccount": "8tqh2oYijXGVE7WV7erf3i3bBzFV7hG1tsYosFqkANtX",
+      "rawAmount": "6871322",
+      "decimals": 9,
+      "txCountAtDiscovery": 52,
+      "oldestBlockTime": 1758069998,
+      "verifiedAt": "2026-10-11T15:13:26.806Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "6GJbPKBtovsrMEEMcic5KMi5tswh9qSyT5ZYLMqEwNgt",
+      "symbol": "ANTHROPIC",
+      "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+      "tokenAccount": "6RjcqBjrY2EiAPcoRRHRfz98Pdiz3fpmPEPmnkKY1jCB",
+      "rawAmount": "112264883665",
+      "decimals": 9,
+      "txCountAtDiscovery": 62,
+      "oldestBlockTime": 1785854299,
+      "verifiedAt": "2026-10-11T15:13:11.710Z",
+      "evidence": "MEASURED"
+    },
+    {
+      "wallet": "DPP2KqQhswpcEkWXXB9fRR3BQCbAmLW6fKk8HvzFtn7M",
+      "symbol": "OPENAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "tokenAccount": "HgWVHPJZnDKfyimKotWyAo6vWeWqWdXqn44M2DASXp7q",
+      "rawAmount": "26407674112",
+      "decimals": 9,
+      "txCountAtDiscovery": 73,
+      "oldestBlockTime": 1758069998,
+      "verifiedAt": "2026-10-11T15:13:29.746Z",
+      "evidence": "MEASURED"
+    }
+  ]
+}

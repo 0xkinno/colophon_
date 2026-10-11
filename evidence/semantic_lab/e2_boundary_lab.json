@@ -1,0 +1,237 @@
+{
+  "cluster": "devnet",
+  "rpc": "https://api.devnet.solana.com",
+  "payer": "C6cArZ2jgVq59ETyE6fQeLWvRvyXf85sxXH5UEKHAf3L",
+  "startedAt": "2026-10-11T15:07:25.271Z",
+  "cases": {
+    "C1": {
+      "question": "Does multiplier ever roll forward by itself after the effective time?",
+      "mint": "3fsmZdcJKsqFn2kauN7LtRwzh97hy47upYsX5vzK8XTV",
+      "signatures": {
+        "create": "4SR7Q2hus2qW7bMDXsLfmyRMq5z3GbpS4EvGN1MpcDC84Xzcz7uPSGijPYqdGAGXRTipShC8ALMZxDqcevBTmwc3",
+        "mint": "4KQLDCQhPYeq8rdrDc6K8et5fj2STgURTGsv1RPr9nSy9KTtDjmNFri6BTcF8xdLzt7rupqaB5neArpLzjzZABex",
+        "schedule": "5Jq2pN6d8c74njauCgbTb8euGWD8aJVPkQtaR7HpSWfq54s46e5jahWDDykQYw8Tet7nfkM3obtzmefvsR6QrDvd"
+      },
+      "explorer": "https://explorer.solana.com/tx/5Jq2pN6d8c74njauCgbTb8euGWD8aJVPkQtaR7HpSWfq54s46e5jahWDDykQYw8Tet7nfkM3obtzmefvsR6QrDvd?cluster=devnet",
+      "effectiveAt": 1791731296,
+      "during": {
+        "state": {
+          "multiplier": "1",
+          "newMultiplier": "2",
+          "newMultiplierEffectiveTimestamp": 1791731296,
+          "slot": 509942212
+        },
+        "ui": {
+          "ui": "1000",
+          "slot": 509942215,
+          "blockTime": 1791731258,
+          "err": null
+        },
+        "balance": {
+          "uiAmountString": "1000",
+          "amount": "1000000000"
+        }
+      },
+      "after": {
+        "state": {
+          "multiplier": "1",
+          "newMultiplier": "2",
+          "newMultiplierEffectiveTimestamp": 1791731296,
+          "slot": 509942392
+        },
+        "ui": {
+          "ui": "2000",
+          "slot": 509942395,
+          "blockTime": 1791731301,
+          "err": null
+        },
+        "balance": {
+          "uiAmountString": "2000",
+          "amount": "1000000000"
+        }
+      },
+      "answer": "NO: the multiplier field stays at the old value; newMultiplier is the one in force."
+    },
+    "C6": {
+      "question": "What does getTokenAccountBalance show during the pending window?",
+      "signatures": {
+        "schedule": "5Jq2pN6d8c74njauCgbTb8euGWD8aJVPkQtaR7HpSWfq54s46e5jahWDDykQYw8Tet7nfkM3obtzmefvsR6QrDvd"
+      },
+      "explorer": "https://explorer.solana.com/tx/5Jq2pN6d8c74njauCgbTb8euGWD8aJVPkQtaR7HpSWfq54s46e5jahWDDykQYw8Tet7nfkM3obtzmefvsR6QrDvd?cluster=devnet",
+      "duringPending": {
+        "uiAmountString": "1000",
+        "amount": "1000000000"
+      },
+      "programUiDuringPending": "1000",
+      "afterEffective": {
+        "uiAmountString": "2000",
+        "amount": "1000000000"
+      },
+      "programUiAfterEffective": "2000"
+    },
+    "C2": {
+      "question": "Is the boundary >= or > at the effective timestamp?",
+      "mint": "7EY9SVqZsep2YjdKoyjDDK1Svo2KCDNxZjNWgXqevHa2",
+      "signatures": {
+        "create": "re8TsDX8aBJ6uoQfeqQ6Ej78SxtAvq1FGE5VQZJJtMTJMATHU2VNPoMfUEyR9MJxVo4rT6FaxANCT4zBHpwQxXc",
+        "mint": "4XRzcGb9K77AgBVzt5YE6aWMckfxwJvuJZUFu7B6z5SGN7asHmiUr8pj2oVq5TXowEKKg2VnWpesX8ZJ6YsDxADn",
+        "schedule": "4F8LWLL77mBsgJJbEfFznDQXrvWkhgSJzgF1gxy7LYBMF1TYsotFZs5MwEaDt8fkLfrXgmfPdZFkmkaU7ULneyuZ"
+      },
+      "explorer": "https://explorer.solana.com/tx/4F8LWLL77mBsgJJbEfFznDQXrvWkhgSJzgF1gxy7LYBMF1TYsotFZs5MwEaDt8fkLfrXgmfPdZFkmkaU7ULneyuZ?cluster=devnet",
+      "effectiveAt": 1791731334,
+      "firstScaledSample": {
+        "ui": "3000",
+        "blockTime": 1791731334,
+        "slot": 509942532,
+        "relative": 0
+      },
+      "samples": [
+        {
+          "ui": "1000",
+          "blockTime": 1791731306,
+          "slot": 509942415,
+          "relative": -28
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731307,
+          "slot": 509942419,
+          "relative": -27
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731308,
+          "slot": 509942425,
+          "relative": -26
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731313,
+          "slot": 509942443,
+          "relative": -21
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731314,
+          "slot": 509942447,
+          "relative": -20
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731315,
+          "slot": 509942452,
+          "relative": -19
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731318,
+          "slot": 509942463,
+          "relative": -16
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731322,
+          "slot": 509942479,
+          "relative": -12
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731323,
+          "slot": 509942485,
+          "relative": -11
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731328,
+          "slot": 509942505,
+          "relative": -6
+        },
+        {
+          "ui": "1000",
+          "blockTime": 1791731330,
+          "slot": 509942515,
+          "relative": -4
+        },
+        {
+          "ui": "3000",
+          "blockTime": 1791731334,
+          "slot": 509942532,
+          "relative": 0
+        },
+        {
+          "ui": "3000",
+          "blockTime": 1791731337,
+          "slot": 509942541,
+          "relative": 3
+        }
+      ],
+      "answer": "AT_OR_AFTER (>=): scaled value appears when blockTime equals the effective timestamp."
+    },
+    "C3": {
+      "question": "After A then B before A takes effect, is A recoverable from state at all?",
+      "mint": "2zQdhfJtRJjPSS7AaxEQwWEzz5eBbvRxD9iVmYh1bTw5",
+      "signatures": {
+        "create": "4NU45D3C5nZfXrbeyaRMDAcrrKLW7VCYxUzjWjuMBDrmRwiQmaT11vDK86EswCCq8M5MRtXmo4qDt4gER9acFoxW",
+        "mint": "5YEAyQcX195hS5Pp6gscic6KZGqUNEL2abUjmkZrG3gKFrYyDDg6eSu6c36uDGaGTLGgA8uz7UTKFS6wbs7jCHhU",
+        "A": "qzrE5baWbELPrvaRNgHLJYnR1VnYCwdVPsZtpap2E1L2z3T7eH2z6B1V8Vffksuhxh6syXfYaFU6befvEkqB8g1",
+        "B": "2JZcVYXE4XLn8oXoPJUTNCEfhexUP7u4kQcQTyV7zxvjbJDM8BBvPTtudhzm9b7pDohbH8EoMbFE97C5p9cyAEgM"
+      },
+      "explorerA": "https://explorer.solana.com/tx/qzrE5baWbELPrvaRNgHLJYnR1VnYCwdVPsZtpap2E1L2z3T7eH2z6B1V8Vffksuhxh6syXfYaFU6befvEkqB8g1?cluster=devnet",
+      "explorerB": "https://explorer.solana.com/tx/2JZcVYXE4XLn8oXoPJUTNCEfhexUP7u4kQcQTyV7zxvjbJDM8BBvPTtudhzm9b7pDohbH8EoMbFE97C5p9cyAEgM?cluster=devnet",
+      "afterA": {
+        "multiplier": "1",
+        "newMultiplier": "7",
+        "newMultiplierEffectiveTimestamp": 1791734945,
+        "slot": 509942583
+      },
+      "afterB": {
+        "multiplier": "1",
+        "newMultiplier": "9",
+        "newMultiplierEffectiveTimestamp": 1791738545,
+        "slot": 509942587
+      },
+      "answer": "NO: state holds only B. A exists only in transaction history. Recovering history from transactions is required."
+    },
+    "C4": {
+      "question": "After A took effect and B is scheduled, does multiplier become A?",
+      "mint": "DaGQuVc28BJ9hLA8qx2G8bPHkBTiDYKiauVRZQtqENEx",
+      "signatures": {
+        "create": "2YDiThd8AsURrR2ntQpwv9jn1H6hmUHyeXWKh5e5KgchR5cREk83juxQWAJ8gZqPTScet7Vhw3kNpKrioxagP9Cn",
+        "mint": "2sRD4B13BDvwfSiXs8SbZgR7MRKSPVS6SNB7wYqRNX8s3ShCnd7SzsrB21jENrWdJBsEhUHzwxGec49bS4qbq2Y5",
+        "A": "GtSJtZUzapBPiTAUpPAJb6KUWhDeTVf9oaCEna9TJNSt3as2C3mS9UEYU7WwnbDQuj2haEVwMZdkcwNwQ3JFCQ9",
+        "B": "4NbJ9xJdeBzj6w4SiReiwSjse3dPmYi5Cimk9QLEqpjdhmKBJXvz6k2HkVGdJUUokM4LL7YYmhsLJKBd55b5NaCc"
+      },
+      "explorerA": "https://explorer.solana.com/tx/GtSJtZUzapBPiTAUpPAJb6KUWhDeTVf9oaCEna9TJNSt3as2C3mS9UEYU7WwnbDQuj2haEVwMZdkcwNwQ3JFCQ9?cluster=devnet",
+      "explorerB": "https://explorer.solana.com/tx/4NbJ9xJdeBzj6w4SiReiwSjse3dPmYi5Cimk9QLEqpjdhmKBJXvz6k2HkVGdJUUokM4LL7YYmhsLJKBd55b5NaCc?cluster=devnet",
+      "beforeB": {
+        "multiplier": "1",
+        "newMultiplier": "5",
+        "newMultiplierEffectiveTimestamp": 1791731375,
+        "slot": 509942719
+      },
+      "afterB": {
+        "multiplier": "5",
+        "newMultiplier": "6",
+        "newMultiplierEffectiveTimestamp": 1791734979,
+        "slot": 509942727
+      },
+      "answer": "YES: multiplier rolls to A when B is scheduled (ACTIVE_AT_SUBMIT).",
+      "rollPolicy": "ACTIVE_AT_SUBMIT"
+    },
+    "C5": {
+      "question": "f64 rounding versus exact decimal for a large raw amount",
+      "mint": "DXPJBDBfKVVDKs8bJDwkmE2Skiof6La22VY1dEpC5BbZ",
+      "signatures": {
+        "create": "av31gQQEvJpXSVX7hw4CD6GTZUVLhDAYq3PQhJM7XmKQe2JeNimYLUuQX8XCU9XaBPGrWvuHC4BB4h9ppu1UMKh",
+        "mint": "CPnu26jKMjgsEkGYjFPKq3RxGsf9JQhdrqXnvDUWAQEF9fzhKS8DoRBYQbtQKacYcNSJDBFWBwwdaJYWJhSuvzz"
+      },
+      "explorer": "https://explorer.solana.com/tx/CPnu26jKMjgsEkGYjFPKq3RxGsf9JQhdrqXnvDUWAQEF9fzhKS8DoRBYQbtQKacYcNSJDBFWBwwdaJYWJhSuvzz?cluster=devnet",
+      "raw": "9007199254740993",
+      "multiplierF64": 1.0000000000000002,
+      "programUi": "9007199254740994",
+      "exactDecimalFloor": "9007199254740994",
+      "answer": "EXACT: program output equals exact decimal."
+    }
+  },
+  "finishedAt": "2026-10-11T15:09:36.377Z"
+}

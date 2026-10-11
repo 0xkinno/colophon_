@@ -1,0 +1,42 @@
+{
+  "name": "colophon-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "sync": "node ../../scripts/sync-web-data.mjs"
+  },
+  "dependencies": {
+    "@colophon/instruments": "workspace:*",
+    "@colophon/kernel": "workspace:*",
+    "@colophon/proof": "workspace:*",
+    "@colophon/verifier": "workspace:*",
+    "@colophon/watch": "workspace:*",
+    "@solana/wallet-adapter-base": "^0.9.28",
+    "@solana/wallet-adapter-react": "^0.15.40",
+    "@solana/wallet-adapter-react-ui": "^0.9.40",
+    "@solana/web3.js": "^1.99.0",
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.475.0",
+    "next": "^14.2.24",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@colophon/chain": "workspace:*",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.20",
+    "viem": "^2.21.0",
+    "@noble/hashes": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.19",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "typescript": "^5.7.3"
+  }
+}
