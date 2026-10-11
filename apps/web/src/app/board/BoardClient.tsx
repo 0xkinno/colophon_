@@ -90,7 +90,16 @@ export function BoardClient({ initial }: { initial: Snap[] }) {
                   </span>
                 </td>
                 <td><span className="chip chip--chain">{r.chain === "solana" ? "Solana" : "Robinhood"}</span></td>
-                <td className="mono">{r.multiplierNow ? `${trimUnits(r.multiplierNow, 8)}x` : <span className="chip chip--unknown">UNKNOWN</span>}</td>
+                <td className="mono">
+                  {r.multiplierNow ? (
+                    <>
+                      {trimUnits(r.multiplierNow, 8)}x{" "}
+                      {r.multiplierSource === "offchain" && <span className="chip chip--unknown" title="Read from the Robinhood asset list because the chain RPC did not answer">OFFCHAIN</span>}
+                    </>
+                  ) : (
+                    <span className="chip chip--unknown">UNKNOWN</span>
+                  )}
+                </td>
                 <td className="mono">{r.staleField ? `${trimUnits(r.staleField, 8)}x` : "n/a"}</td>
                 <td className="mono">
                   {r.pendingMultiplier

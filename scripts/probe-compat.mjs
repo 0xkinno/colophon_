@@ -43,7 +43,7 @@ for (const sym of SYMBOLS) {
     symbol: sym,
     reports: trim(sup.value.uiAmountString),
     kernel: kSupply,
-    verdict: trim(sup.value.uiAmountString) === trim(kSupply) ? "MATCH" : "MISMATCH",
+    verdict: trim(sup.value.uiAmountString) === trim(kSupply) ? "AGREES" : "RAW_VS_SCALED",
     at,
   });
 
@@ -57,26 +57,11 @@ for (const sym of SYMBOLS) {
       symbol: sym,
       reports: trim(bal.value.uiAmountString),
       kernel: k,
-      verdict: trim(bal.value.uiAmountString) === trim(k) ? "MATCH" : "MISMATCH",
+      verdict: trim(bal.value.uiAmountString) === trim(k) ? "AGREES" : "RAW_VS_SCALED",
       at: new Date().toISOString(),
     });
   }
 
-  const oneUnit = (10n ** BigInt(m.decimals)).toString();
-  try {
-    const r = await fetch(`https://lite-api.jup.ag/swap/v1/quote?inputMint=${m.mint}&outputMint=${USDC}&amount=${oneUnit}&slippageBps=50`);
-    const j = await r.json();
-    rows.push({
-      tool: "Jupiter quote API",
-      symbol: sym,
-      reports: r.ok && j.outAmount ? `inAmount ${j.inAmount} raw, out ${j.outAmount}` : `HTTP ${r.status} ${String(j.error ?? j.message ?? "").slice(0, 60)}`,
-      kernel: `1 raw unit = ${fmt(10n ** BigInt(m.decimals), m.decimals, am)} shown`,
-      verdict: r.ok && j.outAmount ? "NOT_COMPARABLE" : "NO_ROUTE",
-      at: new Date().toISOString(),
-    });
-  } catch (e) {
-    rows.push({ tool: "Jupiter quote API", symbol: sym, reports: `fetch failed: ${e.message}`.slice(0, 80), kernel: "n/a", verdict: "NO_ROUTE", at: new Date().toISOString() });
-  }
 }
 
 // Robinhood Chain: balanceOf is raw, uiMultiplier scales it.
@@ -97,7 +82,7 @@ try {
       symbol: a.tokenSymbol,
       reports: supply.toString(),
       kernel: scaled.toString(),
-      verdict: supply === scaled ? "MATCH" : "MISMATCH",
+      verdict: supply === scaled ? "AGREES" : "RAW_VS_SCALED",
       at: new Date().toISOString(),
     });
   }
@@ -109,7 +94,7 @@ mkdirSync(join(ROOT, "evidence", "compat"), { recursive: true });
 const out = {
   generatedAt: new Date().toISOString(),
   method: "Read-only RPC and public quote calls. Kernel value is raw x multiplier in force at the same instant, exact decimal arithmetic.",
-  notRun: ["Jupiter referral fee-account simulation", "Explorer page display screenshots"],
+  notRun: ["Jupiter quote scoring (raw-unit responses, no independent oracle)", "Jupiter referral fee-account simulation", "Explorer page display screenshots"],
   rows,
 };
 writeFileSync(join(ROOT, "evidence", "compat", "probe.json"), JSON.stringify(out, null, 2));

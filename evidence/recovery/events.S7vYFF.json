@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-10-11T17:25:41.482Z",
+  "source": "https://api.mainnet-beta.solana.com",
+  "coverage": {
+    "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS": {
+      "signaturesScanned": 5000,
+      "newestBlockTime": 1791716908,
+      "oldestBlockTime": 1791446527,
+      "reachedBeginning": false
+    }
+  },
+  "failedFetches": 0,
+  "instructionTypesSeen": {
+    "updateMultiplier": 22
+  },
+  "eventCount": 2,
+  "events": [
+    {
+      "signature": "2awZ9ZCcPpsedvuCcC7QxVCkyyRJrUNm1TjENvSSAuq1W2TgAedZNndymwQqv3FcoW83CFt6WjSrsUFgHzyD6xix",
+      "slot": 454652392,
+      "blockTime": 1791491524,
+      "mint": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.009318667481834",
+      "newMultiplierTimestamp": 1783643400
+    },
+    {
+      "signature": "2awZ9ZCcPpsedvuCcC7QxVCkyyRJrUNm1TjENvSSAuq1W2TgAedZNndymwQqv3FcoW83CFt6WjSrsUFgHzyD6xix",
+      "slot": 454652392,
+      "blockTime": 1791491524,
+      "mint": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL",
+      "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+      "newMultiplier": "1.0119221130831109",
+      "newMultiplierTimestamp": 1791505800
+    }
+  ]
+}

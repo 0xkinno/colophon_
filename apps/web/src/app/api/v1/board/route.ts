@@ -51,13 +51,16 @@ export async function GET(req: Request) {
     }
     if (chain === "all" || chain === "robinhood") {
       const assets = await fetchRhAssets();
-      const mults = await Promise.all(
+      const alive = assets.length ? await readRhMultiplier(assets[0].address).then(() => true).catch(() => false) : false;
+      const mults: Array<string | null> = alive
+        ? await Promise.all(
         assets.map((a) =>
           readRhMultiplier(a.address)
             .then((m) => rationalToDecimalString({ num: m, den: 10n ** 18n }, 18))
             .catch(() => null)
         )
-      );
+      )
+        : assets.map(() => null);
       assets.forEach((a, i) => {
         rows.push({
           chain: "robinhood",
@@ -67,7 +70,8 @@ export async function GET(req: Request) {
           category: "xStocks",
           decimals: 18,
           icon: a.logoUrl,
-          multiplierNow: mults[i],
+          multiplierNow: mults[i] ?? a.apiMultiplier,
+          multiplierSource: mults[i] ? "chain" : a.apiMultiplier ? "offchain" : "unknown",
           pendingMultiplier: a.pendingMultiplier,
           status: a.status,
           snapshotAt: new Date(nowTs * 1000).toISOString(),

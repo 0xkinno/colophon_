@@ -21,7 +21,7 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 
 <br/>
 
-<img src="docs/media/hero.gif" width="880" alt="The Colophon landing page: blurred headline resolving word by word, a fanned stack of real token multipliers, and a live ticker" />
+<img src="docs/media/hero.webp" width="880" alt="The Colophon landing page: blurred headline resolving word by word, a fanned stack of real token multipliers, and a live ticker" />
 
 </div>
 
@@ -100,7 +100,7 @@ Tolu lives in Lagos. Last year he bought SPYx and NVDAx on Solana and some TSLA 
 His wallets show today's numbers, adjusted by multipliers that changed since. Neither wallet can say which part of the balance was a purchase, which part was a corporate action, or what he held on that day. (Tolu is illustrative. The mechanism is not.)
 
 <div align="center">
-<img src="docs/media/toggle.gif" width="860" alt="The same balance read two ways: the stored multiplier field versus the multiplier in force" />
+<img src="docs/media/toggle.webp" width="860" alt="The same balance read two ways: the stored multiplier field versus the multiplier in force" />
 </div>
 
 On a real holder of the SpaceX PreStocks token, a reader that stops at the stored `multiplier` field prints **3.085521957**. The multiplier in force gives **15.427609785**. That is a 400 percent difference on one wallet, from one field that is never rolled forward on its own.
@@ -127,7 +127,7 @@ Nothing below was assumed. Each row is a real devnet transaction on a Token-2022
 ## How Colophon works
 
 <div align="center">
-<img src="docs/media/circuit.gif" width="860" alt="Packets flow from wallet and mint history into the kernel, a stale read is stopped and marked refused" />
+<img src="docs/media/circuit.webp" width="860" alt="Packets flow from wallet and mint history into the kernel, a stale read is stopped and marked refused" />
 </div>
 
 1. **Read the holder.** Token accounts for the wallet, filtered to the verified universe, plus the live multiplier state of each mint.
@@ -284,7 +284,7 @@ journey
 Pick any date. The share count changes by exactly the kernel's amount, and every line links to the account or transaction behind it. Digits roll instead of swapping, so a change is something you see.
 
 <div align="center">
-<img src="docs/media/statement.gif" width="860" alt="Changing the date on a real holder's statement and watching the share count roll" />
+<img src="docs/media/statement.webp" width="860" alt="Changing the date on a real holder's statement and watching the share count roll" />
 </div>
 
 ### The statement prints itself
@@ -292,7 +292,7 @@ Pick any date. The share count changes by exactly the kernel's amount, and every
 A pinned scroll chapter feeds the statement out of a slot, line by line, ending in the Colophon block with the bundle hash. On the landing page it uses a real holder's data when one is recorded, and says `SYNTHETIC` when it does not.
 
 <div align="center">
-<img src="docs/media/print.gif" width="860" alt="A statement feeding out of a slot as the page scrolls" />
+<img src="docs/media/print.webp" width="860" alt="A statement feeding out of a slot as the page scrolls" />
 </div>
 
 ### Check it offline, then break it
@@ -300,7 +300,7 @@ A pinned scroll chapter feeds the statement out of a slot, line by line, ending 
 The verifier runs in your browser. Load a real bundle, watch ten checks pass, then flip one byte and watch the exact check that catches it.
 
 <div align="center">
-<img src="docs/media/verify.gif" width="860" alt="Loading a real bundle, passing ten checks, then flipping a byte and failing" />
+<img src="docs/media/verify.webp" width="860" alt="Loading a real bundle, passing ten checks, then flipping a byte and failing" />
 </div>
 
 ### A board for both chains
@@ -308,7 +308,7 @@ The verifier runs in your browser. Load a real bundle, watch ten checks pass, th
 Multiplier in force, the stored field a naive reader sees, anything already scheduled, and the issuer's powers (permanent delegate, pausable, transfer hook, transfer fee). Every Solana mint was proven on chain before it was listed, and each token shows the same icon a wallet shows.
 
 <div align="center">
-<img src="docs/media/board.gif" width="760" alt="Scrolling the board of tracked tokens across both chains" />
+<img src="docs/media/board.webp" width="760" alt="Scrolling the board of tracked tokens across both chains" />
 </div>
 
 ### A tour that drives the real app
@@ -316,7 +316,7 @@ Multiplier in force, the stored field a naive reader sees, anything already sche
 Five chapters with a progress line, arrow keys, wheel and swipe. The right pane is the actual statement page in an iframe, driven by `postMessage`. Nothing in it is a mock-up.
 
 <div align="center">
-<img src="docs/media/tour.gif" width="860" alt="The guided tour driving the live statement page through five steps" />
+<img src="docs/media/tour.webp" width="860" alt="The guided tour driving the live statement page through five steps" />
 </div>
 
 ### Motion with rules
@@ -425,14 +425,13 @@ Raw transaction dumps live in `docs/sources/`, the recovery run in `evidence/rec
 
 Real responses, timestamped, read-only, nothing sent to any network (`evidence/compat/probe.json`).
 
-| Read path | Token | It reports | Kernel | Verdict |
+| Read path | Token | It reports | Kernel (scaled) | Reading |
 |---|---|---|---|---|
-| RPC `getTokenSupply` | OPENAI, SPACEX, AAPLx, NVDAx, SPYx, TSLAx | Program-computed scaled supply | Raw supply x multiplier in force | **MATCH.** The RPC computes the active multiplier correctly. |
-| Jupiter quote API | OPENAI, SPACEX, AAPLx, NVDAx, SPYx, TSLAx | Amounts in **raw** units | One raw unit shown as raw x multiplier | `NOT_COMPARABLE`: a quote is priced per raw unit, so an integration that assumes UI units misprices by the multiplier. |
-| Robinhood Chain `totalSupply()` | CRM | `165730987340000000000` (raw) | `165921300011547413836` (scaled) | **MISMATCH.** Supply is raw, the economic supply is scaled. |
-| Robinhood Chain `totalSupply()` | P, CIEN | Raw equals scaled | Same | MATCH (multiplier is 1) |
+| RPC `getTokenSupply` | OPENAI, SPACEX, AAPLx, NVDAx, SPYx, TSLAx | Program-computed scaled supply | Raw supply x multiplier in force | **AGREES.** The RPC applies the active multiplier correctly, so a wallet that uses it is right. |
+| Robinhood Chain `totalSupply()` | CRM | `165730987340000000000` (raw) | `165921300011547413836` (scaled) | **RAW VS SCALED.** `totalSupply()` is raw by design. Economic supply is raw x `uiMultiplier()`, so tools that print supply directly understate it. |
+| Robinhood Chain `totalSupply()` | P, CIEN | Raw equals scaled | Same | AGREES (multiplier is 1) |
 
-The honest summary: the node is fine, the *integrations* around it are where the multiplier gets dropped.
+The takeaway is deliberately narrow: nodes compute the multiplier correctly, so the risk sits in code that reads the *stored field* or a *raw* figure directly, which is exactly what a statement must not do. Jupiter quote responses are denominated in raw units and were recorded but are not scored here, because without an independent price oracle there is nothing to compare them to.
 
 <br/>
 
@@ -492,7 +491,7 @@ Details and attempts in [`SECURITY.md`](SECURITY.md) and [`docs/audits/`](docs/a
 | Journey test (landing, try, offline check, date change, devnet anchor, proof, tamper, every route, mobile overflow, console errors) | 18+ steps | `pnpm smoke` |
 | No-fabrication guard | every literal | `pnpm guard` |
 | Devnet semantic lab | 6 cases | `pnpm lab` |
-| Compatibility probe | 15 rows | `pnpm probe` |
+| Compatibility probe | 9 scored rows | `pnpm probe` |
 
 <br/>
 

@@ -75,6 +75,7 @@ export type BoardRow = {
   decimals: number;
   icon: string | null;
   multiplierNow: string | null;
+  multiplierSource?: "chain" | "offchain" | "unknown";
   staleField?: string | null;
   pendingMultiplier?: string | null;
   pendingAt?: number | null;

@@ -186,7 +186,7 @@ export default function Home() {
                   {probeRows.map((r, i) => (
                     <tr key={i}>
                       <td className="mono">{r.tool}</td><td className="mono">{r.symbol}</td><td className="mono">{r.reports}</td>
-                      <td className="mono">{r.kernel}</td><td><span className={`chip ${r.verdict === "MATCH" ? "chip--measured" : "chip--breach"}`}>{r.verdict}</span></td>
+                      <td className="mono">{r.kernel}</td><td><span className={`chip ${r.verdict === "AGREES" ? "chip--measured" : "chip--replayed"}`}>{r.verdict.replace(/_/g, " ")}</span></td>
                       <td className="mono">{r.at.slice(0, 19)}Z</td>
                     </tr>
                   ))}
