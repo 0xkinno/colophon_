@@ -52,7 +52,7 @@ export default function ProofPage() {
       </section>
 
       <section>
-        <h2 style={{ fontSize: "1.6rem", marginBottom: 16 }}>Break results</h2>
+        <h2 style={{ fontSize: "1.6rem", marginBottom: 16 }}>Break results: 20 attacks and an untouched control</h2>
         {br.results.length === 0 ? (
           <div className="notice notice--warn">The break campaign has not been run. Run <span className="mono">pnpm break</span> against a running app.</div>
         ) : (
@@ -63,7 +63,7 @@ export default function ProofPage() {
                 {br.results.map((r) => (
                   <tr key={r.id}>
                     <td className="mono">{r.id}</td><td>{r.attack}</td>
-                    <td><span className={`chip ${r.detected ? "chip--measured" : "chip--breach"}`}>{r.detected ? "REFUSED" : "MISSED"}</span></td>
+                    <td><span className={`chip ${r.detected ? "chip--measured" : "chip--breach"}`}>{r.id === "B0" ? (r.detected ? "CONTROL PASSES" : "CONTROL FAILED") : r.detected ? "REFUSED" : "MISSED"}</span></td>
                     <td className="mono" style={{ fontSize: 12 }}>{r.reason.slice(0, 120)}</td>
                   </tr>
                 ))}

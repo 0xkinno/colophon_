@@ -7,7 +7,7 @@ Colophon is read-only by design. It cannot move your funds, because it never hol
 | Threat | Defence |
 |---|---|
 | A person pastes a private key, seed phrase or signature into a field or the API | `containsSecretShape` refuses byte arrays, 0x 32-byte hex, base58 of secret length, and fields named like secrets, with HTTP 422, before any other logic runs |
-| A statement is edited after it was produced | Ten offline checks, an evidence Merkle root and a commitment. `pnpm break` runs 21 attacks against a real bundle |
+| A statement is edited after it was produced | Ten offline checks, an evidence Merkle root and a commitment. `pnpm break` runs 20 attacks against a real bundle and checks that the untouched control passes |
 | A number appears that nobody measured | `pnpm guard` fails CI on any base58 literal outside generated constants |
 | History is guessed | `multiplierAt` returns `known:false`. The UI shows `UNKNOWN` with the reason |
 | A server secret leaks to the browser | Only `NEXT_PUBLIC_*` values reach the client. The deployer key is used by scripts, never by the web app |

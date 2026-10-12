@@ -15,7 +15,7 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 ![Robinhood Chain](https://img.shields.io/badge/Robinhood%20Chain-ERC--8056%20uiMultiplier-CCFF00?style=flat-square&labelColor=1A1608)
 ![Offline verifier](https://img.shields.io/badge/offline%20verifier-10%20checks-0F8A5F?style=flat-square)
 ![Tests](https://img.shields.io/badge/tests-53%20unit%20and%20property-0F8A5F?style=flat-square)
-![Break campaign](https://img.shields.io/badge/tamper%20cases%20refused-21%2F21-0F8A5F?style=flat-square)
+![Break campaign](https://img.shields.io/badge/attacks%20refused-20%2F20-0F8A5F?style=flat-square)
 ![Mints verified](https://img.shields.io/badge/mints%20proven%20on%20chain-111-2F5BEA?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-5A5E68?style=flat-square)
 
@@ -88,7 +88,7 @@ Colophon makes the clock an explicit, reconstructed, verifiable input.
 | Tokenized stocks tracked on Solana | **111** (101 xStocks, 10 PreStocks), each proven on chain, none typed by hand |
 | Tokenized stocks tracked on Robinhood Chain | **194**, read live from the chain's asset list and `uiMultiplier()` |
 | Devnet semantic lab | **6 cases**, every one a real transaction with a signature |
-| Tamper cases against a real bundle | **21 of 21 refused** |
+| Tamper attacks against a real bundle | **20 of 20 refused**, and the untouched control passes |
 | Automated tests | **53** (34 kernel and property, 19 verifier), plus a Playwright journey across both chains |
 | Keys, seeds or signatures the server will accept | **0** |
 
@@ -359,7 +359,7 @@ The anchor path is exercised by `pnpm smoke` with a Wallet Standard wallet whose
 
 - Real statements for any Solana wallet and any Robinhood Chain wallet, for any date, with evidence labels and links to the underlying account or transaction.
 - Honest states instead of silent guesses: `UNKNOWN_MULTIPLIER`, `PARTIAL_BALANCE`, `COVERAGE: CURRENT_ONLY`.
-- An offline verifier with ten checks, a break campaign of 21 attacks, 53 unit and property tests, and a Playwright journey test.
+- An offline verifier with ten checks, a break campaign of 20 attacks plus an untouched control, 53 unit and property tests, and a Playwright journey test.
 - Wallet actions that really transact (see above), not a mocked button.
 
 ### Potential impact
@@ -416,7 +416,7 @@ Everything below is already deployed. Colophon reuses it rather than shipping ne
 
 | | |
 |---|---|
-| Transaction | [`0x396b42bf…c7325`](https://robinhoodchain.blockscout.com/tx/0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325) |
+| Transaction | [`0x396b42bf...c7325`](https://robinhoodchain.blockscout.com/tx/0x396b42bff553d37874d945e606444b0d7b8286a4b67d76e67832988f24bc7325) |
 | Block | 86,118,673 on Robinhood Chain mainnet |
 | Status | Reverted by the guard, as designed |
 | Sealed multiplier | `1000566080061092435` |
@@ -503,7 +503,7 @@ Colophon is read-only by construction.
 | No invented values | `scripts/guard-no-fabrication.mjs` fails CI on any base58 literal outside generated constants |
 | Server keys never reach the client | Only `NEXT_PUBLIC_*` values (devnet RPC, program id, site URL) are exposed |
 | Mainnet is never written | Writes exist only on devnet (anchor) and as wallet-signed typed data |
-| Tamper evidence | Ten verifier checks, evidence Merkle root, statement commitment, 21 break cases |
+| Tamper evidence | Ten verifier checks, evidence Merkle root, statement commitment, 20 break attacks with a passing control |
 
 Details and attempts in [`SECURITY.md`](SECURITY.md) and [`docs/audits/`](docs/audits).
 
@@ -515,7 +515,7 @@ Details and attempts in [`SECURITY.md`](SECURITY.md) and [`docs/audits/`](docs/a
 |---|---|---|
 | Kernel unit and property tests | 34 (property tests run 200 seeded histories each) | `pnpm test` |
 | Verifier tests, tamper cases B1 to B19 | 19 | `pnpm test` |
-| Break campaign on a **real** bundle | 21 | `pnpm break` |
+| Break campaign on a **real** bundle | 20 attacks, 1 control | `pnpm break` |
 | Journey test (landing, try, offline check, date change, devnet anchor, proof, tamper, every route, mobile overflow, console errors) | 18+ steps | `pnpm smoke` |
 | No-fabrication guard | every literal | `pnpm guard` |
 | Devnet semantic lab | 6 cases | `pnpm lab` |
