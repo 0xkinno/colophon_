@@ -61,6 +61,11 @@ export async function GET(req: Request) {
         )
       )
         : assets.map(() => null);
+      // Robinhood's CDN returns one generic mark for most tokens, so prefer a real company logo:
+      // the matching Solana token icon when we have it, otherwise a public ticker logo.
+      const localBySymbol = new Map(VERIFIED_SOLANA_MINTS.map((m) => [m.symbol.replace(/x$/, "").toUpperCase(), tokenIcon(m.mint)]));
+      const logoFor = (sym: string): string | null =>
+        localBySymbol.get(sym.toUpperCase()) ?? (/^[A-Z.]{1,6}$/.test(sym) ? `https://financialmodelingprep.com/image-stock/${sym}.png` : null);
       assets.forEach((a, i) => {
         rows.push({
           chain: "robinhood",
@@ -69,7 +74,7 @@ export async function GET(req: Request) {
           id: a.address,
           category: "xStocks",
           decimals: 18,
-          icon: a.logoUrl,
+          icon: logoFor(a.symbol) ?? a.logoUrl,
           multiplierNow: mults[i] ?? a.apiMultiplier,
           multiplierSource: mults[i] ? "chain" : a.apiMultiplier ? "offchain" : "unknown",
           pendingMultiplier: a.pendingMultiplier,
