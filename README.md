@@ -32,7 +32,8 @@ One kernel. Two chains. A bundle anyone can re-check offline, in a browser, with
 | | |
 |---|---|
 | **Live app** | https://colophon-fair.vercel.app |
-| **Video demo (under 3 minutes)** | `VIDEO_DEMO_URL_PLACEHOLDER` |
+| **Video demo (under 3 minutes)** | https://youtu.be/V0c4sSHMOwI?si=nTb5RYNpbLUGoGYA |
+| **Pitch video** | https://youtu.be/2K0YBBrQry0?si=O0PklDOZnNLovuOM |
 | **No-wallet demo** | https://colophon-fair.vercel.app/try |
 | **Guided tour** | https://colophon-fair.vercel.app/tour |
 | **Proof, tamper results and in-browser verifier** | https://colophon-fair.vercel.app/proof |
